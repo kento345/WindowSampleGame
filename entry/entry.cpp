@@ -152,7 +152,7 @@ public:
             return false;
         }
 
-       /* if (!bulletConstantBufferInstance_.create(deviceInstance_, constantBufferDescriptorInstance_, sizeof(bullet::ConstBufferData), 3)) {
+   /*     if (!bulletConstantBufferInstance_.create(deviceInstance_, constantBufferDescriptorInstance_, sizeof(bullet::ConstBufferData), 3)) {
             assert(false && "バレット用コンスタントバッファの作成に失敗しました");
             return false;
         }*/
@@ -208,7 +208,7 @@ public:
             commandListInstance_.get()->ClearRenderTargetView(handles[0], clearColor, 0, nullptr);
 
             commandListInstance_.get()->ClearDepthStencilView(depthHandle, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
-            //commandListInstance_.get()->SetPipelineState(piplineStateObjectInstance_.get());
+         
           
             commandListInstance_.get()->SetGraphicsRootSignature(rootSignatureInstance_.get());
 
