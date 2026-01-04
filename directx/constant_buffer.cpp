@@ -44,7 +44,7 @@ bool constant_buffer::create(const device& device, const descriptor_heap& heap, 
 		false;
 	}
 
-	D3D12_CONSTANT_BUFFER_VIEW_DESC cbvDesc{};
+	D3D12_CONSTANT_BUFFER_VIEW_DESC cbvDesc = {};
 	cbvDesc.BufferLocation = constantBuffer_->GetGPUVirtualAddress();
 	cbvDesc.SizeInBytes = size;
 

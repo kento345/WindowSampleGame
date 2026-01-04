@@ -152,10 +152,10 @@ public:
             return false;
         }
 
-   /*     if (!bulletConstantBufferInstance_.create(deviceInstance_, constantBufferDescriptorInstance_, sizeof(bullet::ConstBufferData), 3)) {
+        if (!bulletConstantBufferInstance_.create(deviceInstance_, constantBufferDescriptorInstance_, sizeof(bullet::ConstBufferData), 3)) {
             assert(false && "バレット用コンスタントバッファの作成に失敗しました");
             return false;
-        }*/
+        }
 
         if (!depthBufferheapInstance_.create(deviceInstance_, D3D12_DESCRIPTOR_HEAP_TYPE_DSV, 1)) {
             assert(false && "デプスバッファ用のディスクリプタヒープの作成に失敗しました");
@@ -275,8 +275,8 @@ public:
 
                 quadPolygonInstance_.draw(commandListInstance_);
             }
-          /* if(playerInstance_.isShot)*/
-          /* {
+          /* if(playerInstance_.isShot)
+           {
                 bullet_Polygon::ConstBufferData bulletData{
                     DirectX::XMMatrixTranspose(bulletObjectInstant_.world()),
                     bulletObjectInstant_.color()
