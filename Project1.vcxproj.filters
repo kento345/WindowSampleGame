@@ -16,9 +16,6 @@
     <Filter Include="window">
       <UniqueIdentifier>{714a240a-ad3f-45a2-9623-0efde74ea48a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="entry">
-      <UniqueIdentifier>{1f690bc4-26e1-4a4e-b048-d10d2f211c2a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="directx">
       <UniqueIdentifier>{2d9c4f42-a9db-421f-a53a-0b57b4f0cfd3}</UniqueIdentifier>
     </Filter>
@@ -27,6 +24,9 @@
     </Filter>
     <Filter Include="object">
       <UniqueIdentifier>{0b0aa002-865e-4d85-a4b7-e17c5d358d35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="entry">
+      <UniqueIdentifier>{1f690bc4-26e1-4a4e-b048-d10d2f211c2a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

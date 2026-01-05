@@ -14,7 +14,8 @@ cbuffer ConstantBuffer : register(b1)
 {
     matrix world;
     float4 color;
-}
+};
+
 struct VSOutput
 {
     float4 position : SV_POSITION;
