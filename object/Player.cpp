@@ -31,6 +31,10 @@ void Player::update() noexcept
 
 		isShot = true;
 	}
+	else if(!input::instance().getKey('B'))
+	{
+		isShot = false;
+	}
 
 	DirectX::XMVECTOR temp = DirectX::XMVectorSet(pos.x, pos.y, pos.z, 0.0f);
 	world_.r[3] = DirectX::XMVectorAdd(world_.r[3], temp);

@@ -112,7 +112,12 @@ public:
             return false;
         }
         //quadObjectInstance_.initialize({ -.2f,-1.0f,-1.0f }, { 1,1,1,1 });
-        playerInstance_.initialize({ -.2f,-1.0f,-1.0f }, { 1,1,1,1 });
+        playerInstance_.initialize({ -.2f,-1.0f,-1.0f }, { 0,1,0,1 });
+
+        if (!bulletPolygonInstance_.create(deviceInstance_)) {
+            assert(false && "バレットポリゴンの作成に失敗しました");
+            return false;
+        }
       
 
         if (!rootSignatureInstance_.create(deviceInstance_)) {
@@ -131,8 +136,8 @@ public:
         }
 
         cameraInstance_.initialize({0.0f,0.0f,7.0f});
-
-        if (!constantBufferDescriptorInstance_.create(deviceInstance_, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, 3, true)) {
+         //※                                                                                                 ↓ここの数字の数がバッファーの個数
+        if (!constantBufferDescriptorInstance_.create(deviceInstance_, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, 5, true)) {
             assert(false && "定数バッファ用ディスクリプタヒープの作成に失敗しました");
             return false;
         }
@@ -152,10 +157,10 @@ public:
             return false;
         }
 
-       /* if (!bulletConstantBufferInstance_.create(deviceInstance_, constantBufferDescriptorInstance_, sizeof(bullet::ConstBufferData), 3)) {
+        if (!bulletConstantBufferInstance_.create(deviceInstance_, constantBufferDescriptorInstance_, sizeof(bullet::ConstBufferData), 3)) {
             assert(false && "バレット用コンスタントバッファの作成に失敗しました");
             return false;
-        }*/
+        }
 
         if (!depthBufferheapInstance_.create(deviceInstance_, D3D12_DESCRIPTOR_HEAP_TYPE_DSV, 1)) {
             assert(false && "デプスバッファ用のディスクリプタヒープの作成に失敗しました");
@@ -275,7 +280,7 @@ public:
 
                 quadPolygonInstance_.draw(commandListInstance_);
             }
-          /* if(playerInstance_.isShot)
+          if(playerInstance_.isShot)
            {
                 bullet_Polygon::ConstBufferData bulletData{
                     DirectX::XMMatrixTranspose(bulletObjectInstant_.world()),
@@ -288,7 +293,7 @@ public:
                 commandListInstance_.get()->SetGraphicsRootDescriptorTable(1, bulletConstantBufferInstance_.getGpuDescriptorHandle());
 
                 bulletPolygonInstance_.draw(commandListInstance_);
-           }*/
+           }
 
 
             auto rtToP = resourceBarrier(renderTargetInstance_.get(backBufferIndex), D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
