@@ -1,6 +1,19 @@
 #include "bullet.h"
 #include<cmath>
 
+//bullet::bullet() {
+//    for(int num = 0;num < BULLET_NUM; num++){
+//		bullets_[num] = NULL;
+//	}
+//}
+//
+//bullet::~bullet() {
+//	for(int num = 0;num < BULLET_NUM; num++){
+//		delete bullets_[num];
+//	}
+//}
+
+
 void bullet::initialize(DirectX::XMFLOAT3 pos, DirectX::XMFLOAT4 color)noexcept {
 	world_ = DirectX::XMMatrixTranslation(pos.x, pos.y, pos.z);
 	color_ = color;

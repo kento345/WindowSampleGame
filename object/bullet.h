@@ -1,8 +1,13 @@
 #pragma once
 #include<DirectXMath.h>
 
+#define BULLET_NUM 100
+
 class bullet final	
 {
+	bullet* bullets_[BULLET_NUM];
+
+
 public:
 	struct  ConstBufferData
 	{

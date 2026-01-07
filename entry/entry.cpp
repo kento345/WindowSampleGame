@@ -294,7 +294,7 @@ public:
 
                 bulletPolygonInstance_.draw(commandListInstance_);
            }
-
+          
 
             auto rtToP = resourceBarrier(renderTargetInstance_.get(backBufferIndex), D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
             commandListInstance_.get()->ResourceBarrier(1, &rtToP);
