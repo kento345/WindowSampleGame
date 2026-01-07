@@ -1,13 +1,12 @@
 #pragma once
 #include<DirectXMath.h>
 
+class Bullet;
+
 #define BULLET_NUM 100
 
 class bullet final	
 {
-	bullet* bullets_[BULLET_NUM];
-
-
 public:
 	struct  ConstBufferData
 	{
@@ -18,7 +17,7 @@ public:
 	bullet() = default;
 	~bullet() = default;
 
-	void initialize(DirectX::XMFLOAT3 pos, DirectX::XMFLOAT4 color)noexcept;
+	//void initialize(DirectX::XMFLOAT3 pos, DirectX::XMFLOAT4 color)noexcept;
 
 	void update()noexcept;
 
@@ -29,5 +28,7 @@ public:
 private:
 	DirectX::XMMATRIX world_ = DirectX::XMMatrixIdentity();
 	DirectX::XMFLOAT4 color_ = DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+
+	float move_{};
 };
 

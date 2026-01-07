@@ -112,7 +112,7 @@ public:
             return false;
         }
         //quadObjectInstance_.initialize({ -.2f,-1.0f,-1.0f }, { 1,1,1,1 });
-        playerInstance_.initialize({ -.2f,-1.0f,-1.0f }, { 0,1,0,1 });
+        playerObjectInstance_.initialize({ -.2f,-1.0f,-1.0f }, { 0,1,0,1 });
 
         if (!bulletPolygonInstance_.create(deviceInstance_)) {
             assert(false && "バレットポリゴンの作成に失敗しました");
@@ -184,7 +184,10 @@ public:
 
             triangleObjectInstnce_.update();
             //quadObjectInstance_.update();
-            playerInstance_.update();
+            playerObjectInstance_.update();
+         
+
+            
 
             const auto backBufferIndex = swapChainInstance_.get()->GetCurrentBackBufferIndex();
 
@@ -269,8 +272,8 @@ public:
                 quad_polygon::ConstBufferData quadData{
                      /*   DirectX::XMMatrixTranspose(quadObjectInstance_.world()),
                         quadObjectInstance_.color()*/
-                     DirectX::XMMatrixTranspose(playerInstance_.world()),
-                        playerInstance_.color()
+                     DirectX::XMMatrixTranspose(playerObjectInstance_.world()),
+                        playerObjectInstance_.color()
                 };
                 UINT8* pQuadData{};
                 quadConstantBufferInstance_.constanceBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&pQuadData));
@@ -280,7 +283,7 @@ public:
 
                 quadPolygonInstance_.draw(commandListInstance_);
             }
-          if(playerInstance_.isShot)
+           if (playerObjectInstance_.isShot) 
            {
                 bullet_Polygon::ConstBufferData bulletData{
                     DirectX::XMMatrixTranspose(bulletObjectInstant_.world()),
@@ -293,6 +296,8 @@ public:
                 commandListInstance_.get()->SetGraphicsRootDescriptorTable(1, bulletConstantBufferInstance_.getGpuDescriptorHandle());
 
                 bulletPolygonInstance_.draw(commandListInstance_);
+
+                bulletObjectInstant_.update();
            }
           
 
@@ -360,7 +365,7 @@ private:
     //□
     quad_polygon quadPolygonInstance_{};
     //object quadObjectInstance_{};
-    Player playerInstance_{};
+    Player playerObjectInstance_{};
     constant_buffer quadConstantBufferInstance_{};
 
     bullet_Polygon bulletPolygonInstance_{};
