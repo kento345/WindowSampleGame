@@ -1,10 +1,6 @@
 #pragma once
 #include<DirectXMath.h>
 
-class Bullet;
-
-#define BULLET_NUM 100
-
 class bullet final	
 {
 public:

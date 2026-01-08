@@ -102,8 +102,8 @@
     <ClCompile Include="object\bullet.cpp">
       <Filter>object</Filter>
     </ClCompile>
-    <ClCompile Include="BulletManager.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="object\BulletManager.cpp">
+      <Filter>object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,8 +176,8 @@
     <ClInclude Include="object\bullet.h">
       <Filter>object</Filter>
     </ClInclude>
-    <ClInclude Include="BulletManager.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="object\BulletManager.h">
+      <Filter>object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
