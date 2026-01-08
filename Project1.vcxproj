@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BulletManager.h" />
     <ClInclude Include="directx\command_allocator.h" />
     <ClInclude Include="directx\command_list.h" />
     <ClInclude Include="directx\command_queue.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="window\window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="directx\command_allocator.cpp" />
     <ClCompile Include="directx\command_list.cpp" />
     <ClCompile Include="directx\command_queue.cpp" />

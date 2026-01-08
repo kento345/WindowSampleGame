@@ -283,7 +283,7 @@ public:
 
                 quadPolygonInstance_.draw(commandListInstance_);
             }
-           if (playerObjectInstance_.isShot) 
+           //if (playerObjectInstance_.isShot) 
            {
                 bullet_Polygon::ConstBufferData bulletData{
                     DirectX::XMMatrixTranspose(bulletObjectInstant_.world()),
