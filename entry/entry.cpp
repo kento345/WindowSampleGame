@@ -283,8 +283,8 @@ public:
 
                 quadPolygonInstance_.draw(commandListInstance_);
             }
-           //if (playerObjectInstance_.isShot) 
-           {
+            if (playerObjectInstance_.isShot)
+            {
                 bullet_Polygon::ConstBufferData bulletData{
                     DirectX::XMMatrixTranspose(bulletObjectInstant_.world()),
                     bulletObjectInstant_.color()
@@ -298,8 +298,9 @@ public:
                 bulletPolygonInstance_.draw(commandListInstance_);
 
                 bulletObjectInstant_.update();
-           }
+            }
           
+            
 
             auto rtToP = resourceBarrier(renderTargetInstance_.get(backBufferIndex), D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
             commandListInstance_.get()->ResourceBarrier(1, &rtToP);
