@@ -30,6 +30,7 @@ void Player::update() noexcept
 	if (input::instance().getKey('B')) {
 
 		isShot = true;
+		shotCount_++;
 	}
 	/*else if(!input::instance().getKey('B'))
 	{

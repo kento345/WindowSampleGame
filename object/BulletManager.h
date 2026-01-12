@@ -11,9 +11,8 @@ public:
 	BulletManager() = default;
 	~BulletManager() = default;
 
-	void createBullet(bullet&  bulletInstance,constant_buffer& bulletConstant,bullet_Polygon bulletPolygonInstance,command_list comandlistInstance)noexcept;
+	void createBullet(bullet&  bulletInstance,constant_buffer& bulletConstant,bullet_Polygon& bulletPolygonInstance,command_list& comandlistInstance)noexcept;
 
-
-
+	void resetBullet() noexcept;
 };
 
