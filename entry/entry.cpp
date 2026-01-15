@@ -138,7 +138,7 @@ public:
 
         cameraInstance_.initialize({0.0f,0.0f,7.0f});
          //※                                                                                                 ↓ここの数字の数がバッファーの個数
-        if (!constantBufferDescriptorInstance_.create(deviceInstance_, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, 5, true)) {
+        if (!constantBufferDescriptorInstance_.create(deviceInstance_, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, 10, true)) {
             assert(false && "定数バッファ用ディスクリプタヒープの作成に失敗しました");
             return false;
         }
@@ -158,20 +158,14 @@ public:
             return false;
         }
 
-        for(int i = 0;i = playerObjectInstance_.shotCount_;i++){
-            if (!bulletConstantBufferInstance_.create(deviceInstance_, constantBufferDescriptorInstance_, sizeof(bullet::ConstBufferData), i)) {
-                assert(false && "バレット用コンスタントバッファの作成に失敗しました");
-                return false;
-            }
-		}
-        
-       
-
-
-        if(!bulletConstantBufferInstance_.create(deviceInstance_, constantBufferDescriptorInstance_, sizeof(bullet::ConstBufferData), 4)){
+        if (!bulletConstantBufferInstance_.create(deviceInstance_, constantBufferDescriptorInstance_, sizeof(bullet::ConstBufferData), 3)) {
             assert(false && "バレット用コンスタントバッファの作成に失敗しました");
             return false;
-		}
+        }
+      
+       /* for (int i = 3; i < 6;i++) {
+            bulletManagerInstance_.createConstant(bulletConstantBufferInstance_, deviceInstance_, constantBufferDescriptorInstance_, bulletObjectInstant_, i);
+        }*/
 
         if (!depthBufferheapInstance_.create(deviceInstance_, D3D12_DESCRIPTOR_HEAP_TYPE_DSV, 1)) {
             assert(false && "デプスバッファ用のディスクリプタヒープの作成に失敗しました");
@@ -297,7 +291,9 @@ public:
            
             if (playerObjectInstance_.isShot)
             {
-                bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_, bulletPolygonInstance_, commandListInstance_);
+                //bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_, bulletPolygonInstance_, commandListInstance_);
+                //for(int i = 0;)
+                //bulletManagerInstance_.createBullet1(bulletObjectInstant_, bulletConstantBufferInstance_, bulletPolygonInstance_, commandListInstance_,deviceInstance_,constantBufferDescriptorInstance_,i);
             }
           
     //        if (playerObjectInstance_.isShot)
