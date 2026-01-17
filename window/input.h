@@ -13,6 +13,8 @@ public:
 
 	bool getKey(uint16_t sKey) const noexcept;
 
+	bool getTrigger(uint16_t sky) const noexcept;
+
 	void updateKeyState(void* pState) noexcept;
 
 private:
@@ -22,5 +24,6 @@ private:
 
 private:
 	byte keyState_[256];
+	byte prevKeyState_[256]{};
 };
 

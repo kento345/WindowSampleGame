@@ -12,6 +12,7 @@ public:
 	~constant_buffer();
 
 	bool create(const device& device, const descriptor_heap& heap, UINT bufferSize, UINT descriptorIndex) noexcept;
+
 	
 	ID3D12Resource* constanceBuffer() const noexcept;
 

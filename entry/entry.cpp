@@ -138,7 +138,7 @@ public:
 
         cameraInstance_.initialize({0.0f,0.0f,7.0f});
          //※                                                                                                 ↓ここの数字の数がバッファーの個数
-        if (!constantBufferDescriptorInstance_.create(deviceInstance_, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, 10, true)) {
+        if (!constantBufferDescriptorInstance_.create(deviceInstance_, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, 15, true)) {
             assert(false && "定数バッファ用ディスクリプタヒープの作成に失敗しました");
             return false;
         }
@@ -158,14 +158,13 @@ public:
             return false;
         }
 
-        if (!bulletConstantBufferInstance_.create(deviceInstance_, constantBufferDescriptorInstance_, sizeof(bullet::ConstBufferData), 3)) {
-            assert(false && "バレット用コンスタントバッファの作成に失敗しました");
-            return false;
-        }
-      
-       /* for (int i = 3; i < 6;i++) {
-            bulletManagerInstance_.createConstant(bulletConstantBufferInstance_, deviceInstance_, constantBufferDescriptorInstance_, bulletObjectInstant_, i);
-        }*/
+        bulletManagerInstance_.createConstant(bulletConstantBufferInstance_, deviceInstance_, constantBufferDescriptorInstance_, 3);
+
+       /* for(int i = 3; i < 13; i++)
+        {
+            bulletManagerInstance_.createConstant(bulletConstantBufferInstance_[i], deviceInstance_, constantBufferDescriptorInstance_, i);
+		}*/
+  
 
         if (!depthBufferheapInstance_.create(deviceInstance_, D3D12_DESCRIPTOR_HEAP_TYPE_DSV, 1)) {
             assert(false && "デプスバッファ用のディスクリプタヒープの作成に失敗しました");
@@ -289,30 +288,23 @@ public:
                 quadPolygonInstance_.draw(commandListInstance_);
             }
            
-            if (playerObjectInstance_.isShot)
+            if (playerObjectInstance_.isShot )
             {
-                //bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_, bulletPolygonInstance_, commandListInstance_);
-                //for(int i = 0;)
-                //bulletManagerInstance_.createBullet1(bulletObjectInstant_, bulletConstantBufferInstance_, bulletPolygonInstance_, commandListInstance_,deviceInstance_,constantBufferDescriptorInstance_,i);
+              /*  bullet_Polygon::ConstBufferData bulletData{
+                   DirectX::XMMatrixTranspose(bulletObjectInstant_.world()),
+                   bulletObjectInstant_.color()
+                };
+                UINT8* pBulletData{};
+                bulletConstantBufferInstance_[playerObjectInstance_.shotCount].constanceBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&pBulletData));
+                memcpy_s(pBulletData, sizeof(bulletData), &bulletData, sizeof(bulletData));
+                bulletConstantBufferInstance_[playerObjectInstance_.shotCount].constanceBuffer()->Unmap(0, nullptr);
+                commandListInstance_.get()->SetGraphicsRootDescriptorTable(1, bulletConstantBufferInstance_[playerObjectInstance_.shotCount].getGpuDescriptorHandle());
+
+                bulletPolygonInstance_.draw(commandListInstance_);
+
+                bulletObjectInstant_.update();*/
+                bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_, bulletPolygonInstance_, commandListInstance_);
             }
-          
-    //        if (playerObjectInstance_.isShot)
-    //        {
-				//bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_, bulletPolygonInstance_, commandListInstance_);
-    //            /* bullet_Polygon::ConstBufferData bulletData{
-    //                DirectX::XMMatrixTranspose(bulletObjectInstant_.world()),
-    //                bulletObjectInstant_.color()
-    //            };
-    //            UINT8* pBulletData{};
-    //            bulletConstantBufferInstance_.constanceBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&pBulletData));
-    //            memcpy_s(pBulletData, sizeof(bulletData), &bulletData, sizeof(bulletData));
-    //            bulletConstantBufferInstance_.constanceBuffer()->Unmap(0, nullptr);
-    //            commandListInstance_.get()->SetGraphicsRootDescriptorTable(1, bulletConstantBufferInstance_.getGpuDescriptorHandle());
-
-    //            bulletPolygonInstance_.draw(commandListInstance_);
-
-    //            bulletObjectInstant_.update();*/
-    //        }
           
             auto rtToP = resourceBarrier(renderTargetInstance_.get(backBufferIndex), D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
             commandListInstance_.get()->ResourceBarrier(1, &rtToP);
@@ -380,10 +372,11 @@ private:
     //object quadObjectInstance_{};
     Player playerObjectInstance_{};
     constant_buffer quadConstantBufferInstance_{};
-
+    //Bullet
     bullet_Polygon bulletPolygonInstance_{};
     bullet bulletObjectInstant_{};
-    constant_buffer bulletConstantBufferInstance_{};
+	constant_buffer bulletConstantBufferInstance_{};
+    //constant_buffer bulletConstantBufferInstance_[10] = {};
 	BulletManager bulletManagerInstance_{};
 
     descriptor_heap depthBufferheapInstance_{};

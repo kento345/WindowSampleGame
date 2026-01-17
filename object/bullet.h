@@ -1,5 +1,6 @@
 #pragma once
 #include<DirectXMath.h>
+#include"../object/Player.h"
 
 class bullet final	
 {

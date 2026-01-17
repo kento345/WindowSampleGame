@@ -27,15 +27,21 @@ void Player::update() noexcept
 		pos.x += moveSpeed;
 	}
 
+	//if (input::instance().getTrigger('B'))
+	//{
+	//	isShot = true;
+	//	shotCount++;
+	//}
+
 	if (input::instance().getKey('B')) {
 
 		isShot = true;
-		shotCount_++;
+		shotCount++;
 	}
-	/*else if(!input::instance().getKey('B'))
+	else if(!input::instance().getKey('B'))
 	{
 		isShot = false;
-	}*/
+	}
 
 	DirectX::XMVECTOR temp = DirectX::XMVectorSet(pos.x, pos.y, pos.z, 0.0f);
 	world_.r[3] = DirectX::XMVectorAdd(world_.r[3], temp);

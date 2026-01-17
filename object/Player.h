@@ -16,7 +16,7 @@ public:
 
 public:
 	Player() = default;
-	
+
 	~Player() = default;
 
 	void initialize(DirectX::XMFLOAT3 pos, DirectX::XMFLOAT4 color) noexcept;
@@ -24,7 +24,7 @@ public:
 	void update() noexcept;
 
 	bool isShot = false;
-	int shotCount_{ 3 };
+	int shotCount = 0;
 
 	DirectX::XMMATRIX world() const noexcept;
 	DirectX::XMFLOAT4 color()const noexcept;
