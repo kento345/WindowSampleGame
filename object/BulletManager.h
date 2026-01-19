@@ -15,9 +15,9 @@ public:
 	BulletManager() = default;
 	~BulletManager() = default;
 
-	void createConstant(constant_buffer& bulletConst, device& deviceInstance, descriptor_heap& constantBufferDescriptorInstance_, int count) noexcept;
+	void createConstant(constant_buffer& bulletConst, device& deviceInstance, descriptor_heap& constantBufferDescriptorInstance_) noexcept;
 
-	void createBullet(bullet&  bulletInstance,constant_buffer& bulletConstant, bullet_Polygon& bulletPolygonInstance, command_list& comandlistInstance)noexcept;
+	void createBullet(bullet&  bulletInstance,constant_buffer* bulletConstant, bullet_Polygon& bulletPolygonInstance, command_list& comandlistInstance,int i)noexcept;
 
 };
 

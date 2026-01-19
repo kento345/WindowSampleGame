@@ -138,7 +138,7 @@ public:
 
         cameraInstance_.initialize({0.0f,0.0f,7.0f});
          //※                                                                                                 ↓ここの数字の数がバッファーの個数
-        if (!constantBufferDescriptorInstance_.create(deviceInstance_, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, 15, true)) {
+        if (!constantBufferDescriptorInstance_.create(deviceInstance_, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, 10, true)) {
             assert(false && "定数バッファ用ディスクリプタヒープの作成に失敗しました");
             return false;
         }
@@ -158,12 +158,12 @@ public:
             return false;
         }
 
-        bulletManagerInstance_.createConstant(bulletConstantBufferInstance_, deviceInstance_, constantBufferDescriptorInstance_, 3);
+        //bulletManagerInstance_.createConstant(bulletConstantBufferInstance_, deviceInstance_, constantBufferDescriptorInstance_, 3);
 
-       /* for(int i = 3; i < 13; i++)
+        for(int i = 0; i < 5; i++)
         {
-            bulletManagerInstance_.createConstant(bulletConstantBufferInstance_[i], deviceInstance_, constantBufferDescriptorInstance_, i);
-		}*/
+           bulletManagerInstance_.createConstant(bulletConstantBufferInstance_[i], deviceInstance_, constantBufferDescriptorInstance_);
+		}
   
 
         if (!depthBufferheapInstance_.create(deviceInstance_, D3D12_DESCRIPTOR_HEAP_TYPE_DSV, 1)) {
@@ -303,7 +303,7 @@ public:
                 bulletPolygonInstance_.draw(commandListInstance_);
 
                 bulletObjectInstant_.update();*/
-                bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_, bulletPolygonInstance_, commandListInstance_);
+                bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_, bulletPolygonInstance_, commandListInstance_,playerObjectInstance_.shotCount);
             }
           
             auto rtToP = resourceBarrier(renderTargetInstance_.get(backBufferIndex), D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
@@ -375,8 +375,8 @@ private:
     //Bullet
     bullet_Polygon bulletPolygonInstance_{};
     bullet bulletObjectInstant_{};
-	constant_buffer bulletConstantBufferInstance_{};
-    //constant_buffer bulletConstantBufferInstance_[10] = {};
+	//constant_buffer bulletConstantBufferInstance_{};
+    constant_buffer bulletConstantBufferInstance_[5] = {};
 	BulletManager bulletManagerInstance_{};
 
     descriptor_heap depthBufferheapInstance_{};
