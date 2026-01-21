@@ -12,3 +12,7 @@ bool input::getTrigger(uint16_t skey)const noexcept {
 void input::updateKeyState(void* pState)noexcept {
 	memcpy_s(keyState_, sizeof(keyState_), pState, sizeof(keyState_));
 }
+
+void input::updateprevKeyState(void* pState) noexcept {
+	memcpy_s(prevKeyState_, sizeof(prevKeyState_), keyState_, sizeof(keyState_));
+}

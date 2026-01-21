@@ -162,7 +162,7 @@ public:
 
         for(int i = 0; i < 5; i++)
         {
-           bulletManagerInstance_.createConstant(bulletConstantBufferInstance_[i], deviceInstance_, constantBufferDescriptorInstance_);
+           bulletManagerInstance_.createConstant(bulletConstantBufferInstance_[i], deviceInstance_, constantBufferDescriptorInstance_,i + 3);
 		}
   
 

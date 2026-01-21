@@ -17,6 +17,7 @@ public:
 
 	void updateKeyState(void* pState) noexcept;
 
+	void updateprevKeyState(void* pState) noexcept;
 private:
 
 	input() = default;
