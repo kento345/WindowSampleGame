@@ -13,6 +13,6 @@ void input::updateKeyState(void* pState)noexcept {
 	memcpy_s(keyState_, sizeof(keyState_), pState, sizeof(keyState_));
 }
 
-void input::updateprevKeyState(void* pState) noexcept {
+void input::updateprevKeyState() noexcept {
 	memcpy_s(prevKeyState_, sizeof(prevKeyState_), keyState_, sizeof(keyState_));
 }

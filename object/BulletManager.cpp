@@ -29,8 +29,6 @@ void BulletManager::createBullet(bullet& bulletInstance, constant_buffer* bullet
 	bulletInstance.update();
 }
 
-
-
 //void BulletManager::resetBullet() noexcept {
 //    
 //}
