@@ -303,6 +303,7 @@ public:
                 bulletPolygonInstance_.draw(commandListInstance_);
 
                 bulletObjectInstant_.update();*/
+
                 bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_, bulletPolygonInstance_, commandListInstance_,playerObjectInstance_.shotCount);
             }
           

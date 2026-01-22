@@ -3,6 +3,7 @@
 #include"../window/input.h"
 
 
+
 void Player::initialize(DirectX::XMFLOAT3 pos, DirectX::XMFLOAT4 color)noexcept {
 	world_ = DirectX::XMMatrixTranslation(pos.x, pos.y, pos.z);
 

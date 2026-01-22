@@ -4,7 +4,6 @@
 
 
 
-
 class Player final
 {
 public:
@@ -34,6 +33,5 @@ private:
 	DirectX::XMFLOAT4 color_ = DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	
 	float move_{};
-	
-	
+
 };
