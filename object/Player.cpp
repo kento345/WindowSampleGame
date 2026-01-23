@@ -27,7 +27,6 @@ void Player::update() noexcept
 	if (input::instance().getKey('D')) {
 		pos.x += moveSpeed;
 	}
-	isShot = false;
 	if (input::instance().getTrigger('B'))
 	{
 		isShot = true;
