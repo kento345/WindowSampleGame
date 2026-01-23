@@ -189,8 +189,10 @@ public:
             triangleObjectInstnce_.update();
             //quadObjectInstance_.update();
             playerObjectInstance_.update();
-         
 
+          
+            //キー入力押された瞬間のupdate
+            //input::instance().updateprevKeyState();
             
 
             const auto backBufferIndex = swapChainInstance_.get()->GetCurrentBackBufferIndex();
@@ -287,9 +289,10 @@ public:
 
                 quadPolygonInstance_.draw(commandListInstance_);
             }
+
             
-           
-            if (playerObjectInstance_.isShot )
+
+            if (playerObjectInstance_.isShotTrigger())
             {
                 /*  bullet_Polygon::ConstBufferData bulletData{
                       DirectX::XMMatrixTranspose(bulletObjectInstant_.world()),
@@ -303,18 +306,12 @@ public:
                     
                     bulletPolygonInstance_.draw(commandListInstance_);
                     
-                    bulletObjectInstant_.update();*/
-                bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_, bulletPolygonInstance_, commandListInstance_, playerObjectInstance_.shotCount);
+                    bulletObjectInstant_.update();
+                */
 
-<<<<<<< Updated upstream
-                bulletPolygonInstance_.draw(commandListInstance_);
-
-                bulletObjectInstant_.update();*/
-
-                bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_, bulletPolygonInstance_, commandListInstance_,playerObjectInstance_.shotCount);
-=======
->>>>>>> Stashed changes
+                bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_ ,commandListInstance_,bulletPolygonInstance_,playerObjectInstance_.shotCount);
             }
+           
 
             auto rtToP = resourceBarrier(renderTargetInstance_.get(backBufferIndex), D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
             commandListInstance_.get()->ResourceBarrier(1, &rtToP);

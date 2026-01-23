@@ -12,7 +12,7 @@ void BulletManager::createConstant(constant_buffer & bulletConst, device& device
 	//}
 }
 
-void BulletManager::createBullet(bullet& bulletInstance, constant_buffer* bulletConstantInstant, bullet_Polygon& bulletPolygonInstance, command_list& commandlistInstance,int i) noexcept {
+void BulletManager::createBullet(bullet& bulletInstance, constant_buffer* bulletConstantInstant,command_list& commandlistInstance,bullet_Polygon& bulletPolygonInstance, int i) noexcept {
 
 	bullet_Polygon::ConstBufferData bulletData{
 		DirectX::XMMatrixTranspose(bulletInstance.world()),
@@ -28,6 +28,7 @@ void BulletManager::createBullet(bullet& bulletInstance, constant_buffer* bullet
 
 	bulletInstance.update();
 }
+
 
 //void BulletManager::resetBullet() noexcept {
 //    

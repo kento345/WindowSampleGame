@@ -21,8 +21,8 @@ public:
 	void initialize(DirectX::XMFLOAT3 pos, DirectX::XMFLOAT4 color) noexcept;
 
 	void update() noexcept;
-
-	bool isShot = false;
+	bool isShotTrigger()const noexcept;
+	
 	int shotCount = 0;
 
 	DirectX::XMMATRIX world() const noexcept;
@@ -33,5 +33,5 @@ private:
 	DirectX::XMFLOAT4 color_ = DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	
 	float move_{};
-
+	bool isShot = false;
 };
