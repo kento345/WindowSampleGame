@@ -27,12 +27,26 @@ void Player::update() noexcept
 	if (input::instance().getKey('D')) {
 		pos.x += moveSpeed;
 	}
-	//isShot = false;
+
+	constexpr float deltaTime = 0.016f;
+	
 	if (input::instance().getTrigger('B'))
 	{
 		isShot = true;
+		timer = 1.0f;
 		if (shotCount < 5) {
 			shotCount++;
+		}
+	}
+	
+
+	if (isShot && timer >= 0.0f)
+	{
+		timer -= deltaTime;
+		if (timer <= 0.01f)
+		{
+			isShot = false;
+			timer = 0.0f;
 		}
 	}
 	/*if (!input::instance().getTrigger('B'))
@@ -45,9 +59,9 @@ void Player::update() noexcept
 	world_.r[3] = DirectX::XMVectorAdd(world_.r[3], temp);
 }
 
-bool Player::isShotTrigger()const noexcept {
-	return isShot;
-}
+//bool Player::isShotTrigger()const noexcept {
+//	return isShot;
+//}
 DirectX::XMMATRIX Player::world()const noexcept {
 	return world_;
 }

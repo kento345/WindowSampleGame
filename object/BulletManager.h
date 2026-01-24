@@ -17,7 +17,7 @@ public:
 
 	void createConstant(constant_buffer& bulletConst, device& deviceInstance, descriptor_heap& constantBufferDescriptorInstance_,int i) noexcept;
 
-	void createBullet(bullet& bulletInstance, constant_buffer* bulletConstantInstant, command_list& commandlistInstance, bullet_Polygon& bulletPolygonInstance, int i)noexcept;
+	void createBullet(bullet* bulletInstance, constant_buffer* bulletConstantInstant, command_list& commandlistInstance, bullet_Polygon& bulletPolygonInstance, int i)noexcept;
 
 	void DrawBullet(bullet& bulletInstance, constant_buffer* bulletConstantInstant, int i) noexcept;
 };

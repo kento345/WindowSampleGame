@@ -190,10 +190,9 @@ public:
             //quadObjectInstance_.update();
             playerObjectInstance_.update();
 
-          
             //キー入力押された瞬間のupdate
             input::instance().updateprevKeyState();
-            
+		
 
             const auto backBufferIndex = swapChainInstance_.get()->GetCurrentBackBufferIndex();
 
@@ -294,9 +293,12 @@ public:
                 bulletManagerInstance_.DrawBullet(bulletObjectInstant_, bulletConstantBufferInstance_, playerObjectInstance_.shotCount);
             }*/
 			//std::vector<BulletManager::Bullet>& bullets = bulletManagerInstance_.getBullets();
-
-           if (playerObjectInstance_.isShotTrigger())
+            
+           //if (playerObjectInstance_.isShotTrigger())
+           if (playerObjectInstance_.isShot)
            {
+               bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_, commandListInstance_, bulletPolygonInstance_, playerObjectInstance_.shotCount);
+
                 /*   DirectX::XMMatrixTranspose(bulletObjectInstant_.world()),
                      bulletObjectInstant_.color()
                    };
@@ -310,9 +312,8 @@ public:
                    
                    bulletObjectInstant_.update();
                */
-
-               bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_ ,commandListInstance_,bulletPolygonInstance_,playerObjectInstance_.shotCount);
            }
+        
            
 
             auto rtToP = resourceBarrier(renderTargetInstance_.get(backBufferIndex), D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
@@ -383,7 +384,7 @@ private:
     constant_buffer quadConstantBufferInstance_{};
     //Bullet
     bullet_Polygon bulletPolygonInstance_{};
-    bullet bulletObjectInstant_{};
+    bullet bulletObjectInstant_[6] = {};
 	//constant_buffer bulletConstantBufferInstance_{};
     constant_buffer bulletConstantBufferInstance_[6] = {};
 	BulletManager bulletManagerInstance_{};
