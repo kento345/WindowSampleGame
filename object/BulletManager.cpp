@@ -6,10 +6,6 @@ void BulletManager::createConstant(constant_buffer & bulletConst, device& device
 		assert(false && "バレット用コンスタントバッファの作成に失敗しました");
 		return;
 	}
-	//if (!bulletConst.create(deviceInstance, constantBufferDescriptorInstance_, sizeof(bullet::ConstBufferData), 3)) {
-	//	assert(false && "バレット用コンスタントバッファの作成に失敗しました");
-	//	return;
-	//}
 }
 
 void BulletManager::createBullet(bullet& bulletInstance, constant_buffer* bulletConstantInstant,command_list& commandlistInstance,bullet_Polygon& bulletPolygonInstance, int i) noexcept {
@@ -28,6 +24,17 @@ void BulletManager::createBullet(bullet& bulletInstance, constant_buffer* bullet
 
 	bulletInstance.update();
 }
+
+//void BulletManager::DrawBullet(bullet& bulletInstance,constant_buffer* bulletConstantInstant,int i) noexcept {
+//	bullet_Polygon::ConstBufferData bulletData{
+//						   DirectX::XMMatrixTranspose(bulletInstance.world()),
+//						   bulletInstance.color()
+//	};
+//	UINT8* pBulletData{};
+//	bulletConstantInstant[i].constanceBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&pBulletData));
+//	memcpy_s(pBulletData, sizeof(bulletData), &bulletData, sizeof(bulletData));
+//	bulletConstantInstant[i].constanceBuffer()->Unmap(0, nullptr);
+//}
 
 
 //void BulletManager::resetBullet() noexcept {

@@ -16,11 +16,11 @@ void bullet::update()noexcept {
 
 	color_ = DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 
-	/*if(world_ == DirectX::XMMatrixTranslation(0.0f,0.0f, 10.0f))
-	{
-		Player plaerinstance_{};
-		plaerinstance_.isShot = false;
-	}*/
+	//if(world_ == DirectX::XMMatrixTranslation(0.0f,0.0f, 10.0f))
+	//{
+	//	Player plaerinstance_{};
+	//	plaerinstance_.isShot = false;
+	//}
 }
 
 DirectX::XMMATRIX bullet::world()const noexcept {

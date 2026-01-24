@@ -192,7 +192,7 @@ public:
 
           
             //キー入力押された瞬間のupdate
-            //input::instance().updateprevKeyState();
+            input::instance().updateprevKeyState();
             
 
             const auto backBufferIndex = swapChainInstance_.get()->GetCurrentBackBufferIndex();
@@ -289,28 +289,30 @@ public:
 
                 quadPolygonInstance_.draw(commandListInstance_);
             }
-
-            
-
-            if (playerObjectInstance_.isShotTrigger())
+          /*  if (playerObjectInstance_.isShotTrigger())
             {
-                /*  bullet_Polygon::ConstBufferData bulletData{
-                      DirectX::XMMatrixTranspose(bulletObjectInstant_.world()),
-                      bulletObjectInstant_.color()
-                    };
-                    UINT8* pBulletData{};
-                    bulletConstantBufferInstance_[playerObjectInstance_.shotCount].constanceBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&pBulletData));
-                    memcpy_s(pBulletData, sizeof(bulletData), &bulletData, sizeof(bulletData));
-                    bulletConstantBufferInstance_[playerObjectInstance_.shotCount].constanceBuffer()->Unmap(0, nullptr);
-                    commandListInstance_.get()->SetGraphicsRootDescriptorTable(1, bulletConstantBufferInstance_[playerObjectInstance_.shotCount].getGpuDescriptorHandle());
-                    
-                    bulletPolygonInstance_.draw(commandListInstance_);
-                    
-                    bulletObjectInstant_.update();
-                */
+                bulletManagerInstance_.DrawBullet(bulletObjectInstant_, bulletConstantBufferInstance_, playerObjectInstance_.shotCount);
+            }*/
+			//std::vector<BulletManager::Bullet>& bullets = bulletManagerInstance_.getBullets();
 
-                bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_ ,commandListInstance_,bulletPolygonInstance_,playerObjectInstance_.shotCount);
-            }
+           if (playerObjectInstance_.isShotTrigger())
+           {
+                /*   DirectX::XMMatrixTranspose(bulletObjectInstant_.world()),
+                     bulletObjectInstant_.color()
+                   };
+                   UINT8* pBulletData{};
+                   bulletConstantBufferInstance_[playerObjectInstance_.shotCount].constanceBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&pBulletData));
+                   memcpy_s(pBulletData, sizeof(bulletData), &bulletData, sizeof(bulletData));
+                   bulletConstantBufferInstance_[playerObjectInstance_.shotCount].constanceBuffer()->Unmap(0, nullptr);
+                   commandListInstance_.get()->SetGraphicsRootDescriptorTable(1, bulletConstantBufferInstance_[playerObjectInstance_.shotCount].getGpuDescriptorHandle());
+                   
+                   bulletPolygonInstance_.draw(commandListInstance_);
+                   
+                   bulletObjectInstant_.update();
+               */
+
+               bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_ ,commandListInstance_,bulletPolygonInstance_,playerObjectInstance_.shotCount);
+           }
            
 
             auto rtToP = resourceBarrier(renderTargetInstance_.get(backBufferIndex), D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT);
