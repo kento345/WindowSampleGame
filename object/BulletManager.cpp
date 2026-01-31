@@ -1,12 +1,12 @@
 #include "BulletManager.h"
 
-//ConstantBuffrの配列の4にしか作られていない(複製されてない)
 void BulletManager::createConstant(constant_buffer & bulletConst, device& deviceInstance, descriptor_heap& constantBufferDescriptorInstance_,int i) noexcept {
 	if (!bulletConst.create(deviceInstance, constantBufferDescriptorInstance_, sizeof(bullet::ConstBufferData), i)) {
 		assert(false && "バレット用コンスタントバッファの作成に失敗しました");
 		return;
 	}
 }
+ 
 
 void BulletManager::createBullet(bullet* bulletInstance, constant_buffer* bulletConstantInstant,command_list& commandlistInstance,bullet_Polygon& bulletPolygonInstance, int i) noexcept {
 

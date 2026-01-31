@@ -4,7 +4,9 @@
 
 
 
+
 void Player::initialize(DirectX::XMFLOAT3 pos, DirectX::XMFLOAT4 color)noexcept {
+	position_ = pos;
 	world_ = DirectX::XMMatrixTranslation(pos.x, pos.y, pos.z);
 
 	color_ = color;
@@ -13,19 +15,19 @@ void Player::initialize(DirectX::XMFLOAT3 pos, DirectX::XMFLOAT4 color)noexcept 
 void Player::update() noexcept
 {
 	constexpr float	 moveSpeed = 0.05f;
-
 	DirectX::XMFLOAT3 pos{};
+
 	if (input::instance().getKey('W')) {
-		pos.z += moveSpeed;
+		position_.z += moveSpeed;
 	}
 	if (input::instance().getKey('S')) {
-		pos.z -= moveSpeed;
+		position_.z -= moveSpeed;
 	}
 	if (input::instance().getKey('A')) {
-		pos.x -= moveSpeed;
+		position_.x -= moveSpeed;
 	}
 	if (input::instance().getKey('D')) {
-		pos.x += moveSpeed;
+		position_.x += moveSpeed;
 	}
 
 	constexpr float deltaTime = 0.016f;
@@ -33,10 +35,17 @@ void Player::update() noexcept
 	if (input::instance().getTrigger('B'))
 	{
 		isShot = true;
+		isS = true;
 		timer = 1.0f;
 		if (shotCount < 5) {
 			shotCount++;
+			if (shotCount == 5) {
+				shotCount = 0;
+			}
 		}
+	}
+	else if (!input::instance().getTrigger('B')) {
+		isS = false;
 	}
 	
 
@@ -49,25 +58,24 @@ void Player::update() noexcept
 			timer = 0.0f;
 		}
 	}
-	/*if (!input::instance().getTrigger('B'))
-	{
-		isShot = false;
-	}*/
-
-
-	DirectX::XMVECTOR temp = DirectX::XMVectorSet(pos.x, pos.y, pos.z, 0.0f);
-	world_.r[3] = DirectX::XMVectorAdd(world_.r[3], temp);
+	world_ = DirectX::XMMatrixTranslation(
+		position_.x,
+		position_.y,
+		position_.z
+	);
+	/*DirectX::XMVECTOR temp = DirectX::XMVectorSet(pos.x, pos.y, pos.z, 0.0f);
+	world_.r[3] = DirectX::XMVectorAdd(world_.r[3], temp);*/
 }
 
-//bool Player::isShotTrigger()const noexcept {
-//	return isShot;
-//}
 DirectX::XMMATRIX Player::world()const noexcept {
 	return world_;
 }
 
 DirectX::XMFLOAT4 Player::color()const noexcept {
 	return color_;
+}
+DirectX::XMFLOAT3 Player::position() const noexcept {
+	return position_;
 }
 
 

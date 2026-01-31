@@ -162,7 +162,7 @@ public:
 
         for(int i = 0; i < 6; i++)
         {
-           bulletManagerInstance_.createConstant(bulletConstantBufferInstance_[i], deviceInstance_, constantBufferDescriptorInstance_,i + 3);
+            bulletManagerInstance_.createConstant(bulletConstantBufferInstance_[i], deviceInstance_, constantBufferDescriptorInstance_,i + 3);
 		}
   
 
@@ -189,7 +189,7 @@ public:
             triangleObjectInstnce_.update();
             //quadObjectInstance_.update();
             playerObjectInstance_.update();
-
+            
             //キー入力押された瞬間のupdate
             input::instance().updateprevKeyState();
 		
@@ -288,30 +288,13 @@ public:
 
                 quadPolygonInstance_.draw(commandListInstance_);
             }
-          /*  if (playerObjectInstance_.isShotTrigger())
-            {
-                bulletManagerInstance_.DrawBullet(bulletObjectInstant_, bulletConstantBufferInstance_, playerObjectInstance_.shotCount);
-            }*/
-			//std::vector<BulletManager::Bullet>& bullets = bulletManagerInstance_.getBullets();
-            
-           //if (playerObjectInstance_.isShotTrigger())
+      
            if (playerObjectInstance_.isShot)
            {
+               if (playerObjectInstance_.isS) {
+                   bulletObjectInstant_[playerObjectInstance_.shotCount].initialize(playerObjectInstance_.position(), { 1.0f,1.0f,1.0f,1.0f });
+               }
                bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_, commandListInstance_, bulletPolygonInstance_, playerObjectInstance_.shotCount);
-
-                /*   DirectX::XMMatrixTranspose(bulletObjectInstant_.world()),
-                     bulletObjectInstant_.color()
-                   };
-                   UINT8* pBulletData{};
-                   bulletConstantBufferInstance_[playerObjectInstance_.shotCount].constanceBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&pBulletData));
-                   memcpy_s(pBulletData, sizeof(bulletData), &bulletData, sizeof(bulletData));
-                   bulletConstantBufferInstance_[playerObjectInstance_.shotCount].constanceBuffer()->Unmap(0, nullptr);
-                   commandListInstance_.get()->SetGraphicsRootDescriptorTable(1, bulletConstantBufferInstance_[playerObjectInstance_.shotCount].getGpuDescriptorHandle());
-                   
-                   bulletPolygonInstance_.draw(commandListInstance_);
-                   
-                   bulletObjectInstant_.update();
-               */
            }
         
            
@@ -334,8 +317,6 @@ public:
             frameFenceValue_[backBufferIndex] = nextFenceValue_;
             nextFenceValue_++;
         }
-
-       
     }
 
 
