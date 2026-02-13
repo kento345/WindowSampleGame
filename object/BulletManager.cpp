@@ -37,6 +37,6 @@ void BulletManager::createBullet(bullet* bulletInstance, constant_buffer* bullet
 //}
 
 
-//void BulletManager::resetBullet() noexcept {
-//    
-//}
+void BulletManager::resetBullet(bullet* bulletInstance,int i) noexcept {
+	delete[i] bulletInstance;
+}

@@ -37,9 +37,9 @@ void Player::update() noexcept
 		isShot = true;
 		isS = true;
 		timer = 1.0f;
-		if (shotCount < 5) {
+		if (shotCount < 10) {
 			shotCount++;
-			if (shotCount == 5) {
+			if (shotCount == 10) {
 				shotCount = 0;
 			}
 		}

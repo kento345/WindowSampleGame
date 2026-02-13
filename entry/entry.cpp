@@ -138,7 +138,7 @@ public:
 
         cameraInstance_.initialize({0.0f,0.0f,7.0f});
          //※                                                                                                 ↓ここの数字の数がバッファーの個数
-        if (!constantBufferDescriptorInstance_.create(deviceInstance_, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, 10, true)) {
+        if (!constantBufferDescriptorInstance_.create(deviceInstance_, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, 15, true)) {
             assert(false && "定数バッファ用ディスクリプタヒープの作成に失敗しました");
             return false;
         }
@@ -160,7 +160,7 @@ public:
 
         //bulletManagerInstance_.createConstant(bulletConstantBufferInstance_, deviceInstance_, constantBufferDescriptorInstance_, 3);
 
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 10; i++)
         {
             bulletManagerInstance_.createConstant(bulletConstantBufferInstance_[i], deviceInstance_, constantBufferDescriptorInstance_,i + 3);
 		}
@@ -295,6 +295,8 @@ public:
                    bulletObjectInstant_[playerObjectInstance_.shotCount].initialize(playerObjectInstance_.position(), { 1.0f,1.0f,1.0f,1.0f });
                }
                bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_, commandListInstance_, bulletPolygonInstance_, playerObjectInstance_.shotCount);
+          
+               //bulletManagerInstance_.resetBullet(bulletObjectInstant_, playerObjectInstance_.shotCount);
            }
         
            
@@ -365,9 +367,9 @@ private:
     constant_buffer quadConstantBufferInstance_{};
     //Bullet
     bullet_Polygon bulletPolygonInstance_{};
-    bullet bulletObjectInstant_[6] = {};
+    bullet bulletObjectInstant_[10] = {};
 	//constant_buffer bulletConstantBufferInstance_{};
-    constant_buffer bulletConstantBufferInstance_[6] = {};
+    constant_buffer bulletConstantBufferInstance_[10] = {};
 	BulletManager bulletManagerInstance_{};
 
     descriptor_heap depthBufferheapInstance_{};
