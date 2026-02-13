@@ -26,7 +26,6 @@ public:
 	bool isShot = false;
 	bool isS = false;
 	int shotCount = 0;
-	
 
 
 	DirectX::XMMATRIX world() const noexcept;
