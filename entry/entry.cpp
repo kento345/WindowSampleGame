@@ -292,7 +292,7 @@ public:
            if (playerObjectInstance_.isShot)
            {
                if (playerObjectInstance_.isS) {
-                   bulletObjectInstant_[playerObjectInstance_.shotCount].initialize(playerObjectInstance_.position(), { 1.0f,1.0f,1.0f,1.0f });
+                   bulletObjectInstant_[playerObjectInstance_.shotCount].initialize({playerObjectInstance_.position().x,playerObjectInstance_.position().y,1.5f}, {1.0f,1.0f,1.0f,1.0f});
                }
                bulletManagerInstance_.createBullet(bulletObjectInstant_, bulletConstantBufferInstance_, commandListInstance_, bulletPolygonInstance_, playerObjectInstance_.shotCount);
           

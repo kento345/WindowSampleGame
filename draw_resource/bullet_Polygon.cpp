@@ -34,10 +34,10 @@ bool bullet_Polygon::create(const device& device)noexcept {
 bool bullet_Polygon::createVertexBuffer(const device& device)noexcept {
 	Vertex vertices[] = {
 		//éläpå`
-		{ {-0.2f, 0.2f, -1.5f}, {0.0f, 1.0f, 0.0f, 1.0f}},
-		{  {0.2f, 0.2f, -1.5f}, {0.0f, 1.0f, 0.0f, 1.0f}},
-		{{-0.2f, -0.2f, -1.5f}, {0.0f, 1.0f, 0.0f, 1.0f}},
-		{ {0.2f, -0.2f, -1.5f}, {0.0f, 1.0f, 0.0f, 1.0f}},
+		{ {-0.5f, 0.5f, -1.5f}, {0.0f, 1.0f, 0.0f, 1.0f}},
+		{  {0.5f, 0.5f, -1.5f}, {0.0f, 1.0f, 0.0f, 1.0f}},
+		{{-0.5, -0.5f, -1.5f}, {0.0f, 1.0f, 0.0f, 1.0f}},
+		{ {0.5f, -0.5f, -1.5f}, {0.0f, 1.0f, 0.0f, 1.0f}},
 	};
 
 	const auto vertexBufferSize = sizeof(vertices);

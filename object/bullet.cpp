@@ -1,7 +1,7 @@
 #include "bullet.h"
 #include<cmath>
 
-Vector Vector1,Vecotr2, Vector3;
+
 
 void bullet::initialize(DirectX::XMFLOAT3 pos,DirectX::XMFLOAT4 color_)noexcept {
 	startPos_ = { 0.0f,0.0f,0.0f };
