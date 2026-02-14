@@ -2,7 +2,7 @@
 #include<DirectXMath.h>
 #include"../object/Player.h"
 
-class bullet final	
+class bullet final
 {
 public:
 	struct  ConstBufferData
@@ -29,5 +29,9 @@ private:
 	DirectX::XMFLOAT4 color_ = DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 
 	float move_ = 0.0f;
+
+   
+	float VectorX;
+	float VectorZ;
 };
 

@@ -16,6 +16,11 @@ void object::update() noexcept {
 
 }
 
+void object::OnHit()noexcept {
+	color_.y *= 0.95f;
+	color_.z *= 0.95f;
+}
+
 DirectX::XMMATRIX object::world()const noexcept {
 	return world_;
 }

@@ -5,7 +5,7 @@
 
 
 
-class Player final
+class Player final	
 {
 public:
 	struct ConstBufferData

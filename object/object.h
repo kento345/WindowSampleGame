@@ -2,7 +2,7 @@
 
 #include<DirectXMath.h>
 
-class object final
+class object final	
 {
 public:
 	struct ConstBufferData
@@ -19,6 +19,8 @@ public:
 
 	void update()noexcept;
 
+	void OnHit()noexcept;
+
 	DirectX::XMMATRIX world()const noexcept;
 
 	DirectX::XMFLOAT4 color()const noexcept;
@@ -29,4 +31,3 @@ private:
 
 	float move_{};
 };
-
