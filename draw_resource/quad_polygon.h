@@ -11,6 +11,7 @@ public:
 	struct ConstBufferData
 	{
 		DirectX::XMMATRIX world_{}; 
+		//DirectX::XMMATRIX size_{};
 		DirectX::XMFLOAT4 color_{};
 	};
 

@@ -33,9 +33,9 @@ bool triangle_polygon::creat(const device& device)noexcept {
 bool triangle_polygon::createVertexBuffer(const device& device)noexcept {
 	Vertex triangleVertices[] = {
 		//三角形
-	   {{0.0f, 1.0f, 0.0f}  ,{1.0f, 1.0f, 1.0f, 1.0f}},
-	   {{1.0f, -1.0f, 0.0f} ,{1.0f, 1.0f, 1.0f, 1.0f}},
-	   {{-1.0f, -1.0f, 0.0f},{1.0f, 1.0f, 1.0f, 1.0f}},
+	   {{ 0.0f, 1.0f, 0.0f }  ,{1.0f, 1.0f, 1.0f, 1.0f}},
+	   {{ 1.0f, -1.0f, 0.0f } ,{1.0f, 1.0f, 1.0f, 1.0f}},
+	   {{ -1.0f, -1.0f, 0.0f },{1.0f, 1.0f, 1.0f, 1.0f}},
 	};
 
 	const auto vertexBufferSize = sizeof(triangleVertices);

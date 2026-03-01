@@ -5,6 +5,7 @@
 namespace {
 	struct Vertex {
 		DirectX::XMFLOAT3 position;
+		//DirectX::XMFLOAT3 scale;
 		DirectX::XMFLOAT4 color;
 	};
 }
@@ -34,10 +35,10 @@ bool quad_polygon::creat(const device& device)noexcept {
 bool quad_polygon::createVertexBuffer(const device& device)noexcept {
 	Vertex vertices[] = {
 		//éläpå`
-		{ {-0.5f, 0.5f, -1.0f}, {0.0f, 1.0f, 0.0f, 1.0f}},
-		{  {0.5f, 0.5f, -1.0f}, {0.0f, 1.0f, 0.0f, 1.0f}},
-		{{-0.5f, -0.5f, -1.0f}, {0.0f, 1.0f, 0.0f, 1.0f}},
-		{ {0.5f, -0.5f, -1.0f}, {0.0f, 1.0f, 0.0f, 1.0f}},
+		{{ -0.5f, 0.5f, -1.0f},{0.0f, 1.0f, 0.0f, 1.0f}},
+		{{  0.5f, 0.5f, -1.0f},{0.0f, 1.0f, 0.0f, 1.0f}},
+		{{-0.5f, -0.5f, -1.0f},{0.0f, 1.0f, 0.0f, 1.0f}},
+		{{ 0.5f, -0.5f, -1.0f},{0.0f, 1.0f, 0.0f, 1.0f}},
 	};
 
 	const auto vertexBufferSize = sizeof(vertices);

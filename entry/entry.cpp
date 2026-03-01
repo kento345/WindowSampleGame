@@ -262,7 +262,7 @@ public:
             {
                 triangle_polygon::ConstBufferData triangleData{
                         DirectX::XMMatrixTranspose(triangleObjectInstnce_.world()),
-                        triangleObjectInstnce_.color()
+						triangleObjectInstnce_.color()
                 };
                 UINT8* pTriangleData{};
                 triangleConstantBufferInstance_.constanceBuffer()->Map(0, nullptr, reinterpret_cast<void**>(&pTriangleData));
